@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Perspectivas de Género - UJED</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+
+    <!-- PROTECCIÓN CHESSBOARD: este bloque debe ir ANTES que style.css -->
+    <style>
+        /* Proteger todas las imágenes de ajedrez del reset CSS */
+        img { max-width: none; }
+
+        /* Pieza arrastrada que chessboard pone en el body */
+        body > img {
+            position: absolute !important;
+            z-index: 9999 !important;
+            pointer-events: none !important;
+        }
+
+        /* Piezas dentro del tablero */
+        #myBoard img {
+            position: absolute !important;
+            cursor: grab !important;
+        }
+
+        #myBoard img:active {
+            cursor: grabbing !important;
+        }
+    </style>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <div class="header-logos">
+            <!-- Si tienes los logos como imagen reemplaza por:
+                 <img src="logo-ujed.png" class="logo-img" alt="UJED">
+                 <img src="logo-fpytch.png" class="logo-img" alt="FPYTCH"> -->
+            <div class="logo-box">UJED</div>
+            <div class="logo-box">FPYTCH</div>
+        </div>
+        <h1>Perspectivas<br>de <span>Género</span></h1>
+        <p class="subtitulo-fecha">Día Internacional de las Mujeres</p>
+        <div class="badge-8m">✦ 8M ✦</div>
+    </header>
+
+    <div class="info-strip">
+        Jueves 5 de Marzo &nbsp;·&nbsp; 10AM a 12PM &nbsp;·&nbsp; Audiovisual FPYTCH &nbsp;·&nbsp; Durango, Dgo.
+    </div>
+
+    <div class="deco-strip" aria-hidden="true">
+        <div class="deco-strip-inner">
+            👩‍🔬 &nbsp; 🎨 &nbsp; ♟️ &nbsp; 🎷 &nbsp; 📖 &nbsp; 👩‍🎓 &nbsp; 🌸 &nbsp; 💜 &nbsp; 👩‍💼 &nbsp; 🎵 &nbsp; 🔬 &nbsp; ✊ &nbsp;&nbsp;
+            👩‍🔬 &nbsp; 🎨 &nbsp; ♟️ &nbsp; 🎷 &nbsp; 📖 &nbsp; 👩‍🎓 &nbsp; 🌸 &nbsp; 💜 &nbsp; 👩‍💼 &nbsp; 🎵 &nbsp; 🔬 &nbsp; ✊ &nbsp;&nbsp;
+        </div>
+    </div>
+
+    <main>
+        <div class="main-grid">
+            <a href="memorias.html" class="card-link">
+                <div class="card reveal">
+                    <span class="card-emoji">📖</span>
+                    <h2>Memorias de la Conferencia</h2>
+                    <p>Contenido extendido sobre la reestructuración de las violencias y conceptos clave del evento.</p>
+                    <span class="card-cta">Leer más →</span>
+                </div>
+            </a>
+            <a href="academia.html" class="card-link">
+                <div class="card reveal">
+                    <span class="card-emoji">👩‍🔬</span>
+                    <h2>Mujeres en la Academia</h2>
+                    <p>Visibilizando a las científicas y académicas duranguenses de nuestra Universidad.</p>
+                    <span class="card-cta">Leer más →</span>
+                </div>
+            </a>
+            <a href="arte.html" class="card-link">
+                <div class="card reveal">
+                    <span class="card-emoji">🎨</span>
+                    <h2>Mujeres en el Arte</h2>
+                    <p>Desde el Jazz hasta el Madonnari: historias de mujeres que transforman el mundo a través del arte.</p>
+                    <span class="card-cta">Leer más →</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- BOTÓN PARTICIPANTES -->
+        <div style="text-align:center; padding: 10px 0 40px;">
+            <a href="participantes.html" class="btn-participantes">✦ Ver Participantes ✦</a>
+        </div>
+
+        <section id="ajedrez-container">
+            <div class="ajedrez-titulo">Ajedrez Feminista</div>
+            <div class="bot-profile">
+                🤖 Oponente: <span>JUDIT POLGAR (GM)</span>
+            </div>
+
+            <div id="myBoard"></div>
+            <div class="status-label" id="status">Tu turno (Blancas)</div>
+            <br>
+            <button class="btn" onclick="reiniciar()">⟳ Reiniciar Partida</button>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>Taller de Intervención Social Comunitaria</strong></p>
+        <p>Dra. María del Rocío Guzmán Benavente</p>
+        <p style="margin-top:8px; font-size:0.75rem; opacity:0.6;">
+            Coordinado por alumnos de 6to Semestre · UJED · FPYTCH
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

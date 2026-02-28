@@ -1,0 +1,524 @@
+/* ============================================
+   PERSPECTIVAS DE GÉNERO - UJED
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+    --morado: #8e44ad;
+    --morado-oscuro: #6c2f87;
+    --morado-claro: #c39bd3;
+    --lavanda: #e8d5f5;
+    --lavanda-suave: #f3e9fb;
+    --negro: #1a1a1a;
+    --blanco: #ffffff;
+    --acento: #d7bde2;
+}
+
+/* RESET — solo elementos que no sean img */
+*:not(img), *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--lavanda-suave);
+    color: var(--negro);
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%; left: -20%;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(142,68,173,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: floatBlob1 12s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -30%; right: -15%;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(195,155,211,0.22) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: floatBlob2 15s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes floatBlob1 {
+    from { transform: translate(0,0) scale(1); }
+    to   { transform: translate(60px,80px) scale(1.15); }
+}
+@keyframes floatBlob2 {
+    from { transform: translate(0,0) scale(1); }
+    to   { transform: translate(-50px,-60px) scale(1.1); }
+}
+
+/* HEADER */
+header {
+    position: relative;
+    padding: 50px 30px 40px;
+    text-align: center;
+    background: var(--negro);
+    overflow: hidden;
+    z-index: 1;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 30%; left: 50%;
+    transform: translateX(-50%);
+    width: 70%; height: 55%;
+    background: rgba(142,68,173,0.25);
+    filter: blur(40px);
+    border-radius: 50%;
+    animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from { opacity: 0.5; transform: translateX(-50%) scale(1); }
+    to   { opacity: 1;   transform: translateX(-50%) scale(1.1); }
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--morado-oscuro), var(--morado-claro), var(--morado-oscuro));
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.header-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+    animation: fadeDown 0.8s ease both;
+}
+
+.logo-box {
+    border: 2px solid var(--morado-claro);
+    padding: 6px 14px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    display: inline-block;
+    color: var(--blanco);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.logo-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--morado);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.logo-box:hover::before { transform: translateX(0); }
+.logo-box:hover { border-color: var(--blanco); }
+
+.logo-img {
+    height: 55px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s;
+}
+
+h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    color: var(--blanco);
+    line-height: 0.95;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.9s ease 0.2s both;
+}
+
+h1 span { color: var(--morado-claro); }
+
+.subtitulo-fecha {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--morado-claro);
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    margin-top: 10px;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.9s ease 0.4s both;
+}
+
+.badge-8m {
+    display: inline-block;
+    background: var(--morado);
+    color: white;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    padding: 6px 20px;
+    border-radius: 50px;
+    margin-top: 14px;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.9s ease 0.6s both, pulseBadge 2.5s ease 1.5s infinite;
+}
+
+@keyframes pulseBadge {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(142,68,173,0.4); }
+    50%       { box-shadow: 0 0 0 10px rgba(142,68,173,0); }
+}
+
+/* INFO STRIP */
+.info-strip {
+    background: var(--morado);
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+    letter-spacing: 3px;
+    position: relative;
+    z-index: 1;
+}
+
+.info-strip::before { content: '✦  '; opacity: 0.5; }
+.info-strip::after  { content: '  ✦'; opacity: 0.5; }
+
+/* TARJETAS */
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    padding: 50px 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    background: white;
+    padding: 30px 25px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(142,68,173,0.1);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    animation: fadeUp 0.8s ease both;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.25s; }
+.card:nth-child(3) { animation-delay: 0.4s; }
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: linear-gradient(180deg, var(--morado), var(--morado-claro));
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.35s ease;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 100px; height: 100px;
+    background: radial-gradient(circle, rgba(142,68,173,0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    transition: transform 0.4s ease;
+}
+
+.card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(142,68,173,0.2); }
+.card:hover::before { transform: scaleY(1); }
+.card:hover::after  { transform: scale(2); }
+
+.card-emoji {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    display: block;
+    animation: wiggle 3s ease-in-out infinite;
+}
+
+.card:nth-child(2) .card-emoji { animation-delay: 0.5s; }
+.card:nth-child(3) .card-emoji { animation-delay: 1s; }
+
+@keyframes wiggle {
+    0%, 90%, 100% { transform: rotate(0deg); }
+    93%            { transform: rotate(-8deg); }
+    96%            { transform: rotate(8deg); }
+}
+
+.card h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--morado-oscuro);
+    font-size: 1.4rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    line-height: 1.1;
+}
+
+.card p { color: #555; font-size: 0.92rem; line-height: 1.65; }
+
+/* SECCIÓN AJEDREZ */
+#ajedrez-container {
+    background: var(--negro);
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#ajedrez-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(142,68,173,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(142,68,173,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+#ajedrez-container::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px; height: 300px;
+    background: radial-gradient(ellipse, rgba(142,68,173,0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.ajedrez-titulo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: var(--blanco);
+    letter-spacing: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    z-index: 2;
+}
+
+.bot-profile {
+    margin-bottom: 20px;
+    color: var(--acento);
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+.bot-profile span {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--morado-claro);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+#myBoard {
+    width: 90vw;
+    max-width: 400px;
+    margin: 0 auto 20px;
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.status-label {
+    margin: 18px auto;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    color: var(--morado-claro);
+    font-size: 1.1rem;
+    min-height: 1.4em;
+    position: relative;
+    z-index: 2;
+    background: rgba(142,68,173,0.15);
+    display: inline-block;
+    padding: 8px 24px;
+    border-radius: 50px;
+    border: 1px solid rgba(142,68,173,0.3);
+}
+
+.btn {
+    background: transparent;
+    color: var(--morado-claro);
+    border: 2px solid var(--morado);
+    padding: 13px 35px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--morado);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover { color: white; }
+.btn:hover::before { transform: scaleX(1); }
+
+/* FOOTER */
+footer {
+    background: #0f0f0f;
+    color: #aaa;
+    padding: 35px 30px;
+    text-align: center;
+    font-size: 0.82rem;
+    line-height: 1.9;
+    position: relative;
+    z-index: 1;
+    border-top: 3px solid var(--morado-oscuro);
+}
+
+footer strong { color: var(--morado-claro); }
+
+/* ANIMACIONES */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* TIRA DECORATIVA */
+.deco-strip {
+    background: var(--lavanda);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 10px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.deco-strip-inner {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scrollIcons 20s linear infinite;
+}
+
+@keyframes scrollIcons {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .main-grid { padding: 30px 16px; gap: 16px; }
+    header { padding: 35px 16px 30px; }
+    #ajedrez-container { padding: 40px 10px; }
+    .card { padding: 22px 18px; }
+}
+
+/* ============================================
+   TARJETAS CON ENLACE
+   ============================================ */
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.card-cta {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--morado);
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1.5px;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.card-link:hover .card-cta {
+    color: var(--morado-oscuro);
+}
+
+/* BOTÓN PARTICIPANTES */
+.btn-participantes {
+    display: inline-block;
+    text-decoration: none;
+    background: transparent;
+    color: var(--morado);
+    border: 2px solid var(--morado);
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease;
+    z-index: 1;
+}
+
+.btn-participantes::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--morado);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.btn-participantes:hover { color: white; }
+.btn-participantes:hover::before { transform: scaleX(1); }
